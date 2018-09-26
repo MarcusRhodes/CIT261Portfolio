@@ -5,12 +5,21 @@
 
         </title>
         <script>
-
+            function test() {
+                document.getElementById("div1").value = "See what i mean?";
+                return;
+            }
+            function callMe(value) {
+                return;
+            }
         </script>
     </head>
     <body>
         <p>
             This is a test!
         </p>
+    <p>This is another test:  </p>
+    <button onclick="test()">Nutton</button>
+    <div id="div1">If you click the Nutton button, I will change!</div>
     </body>
 </html>
