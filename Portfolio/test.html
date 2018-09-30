@@ -2,25 +2,34 @@
 <html>
     <head>
         <title>
-
+			Trick or Treat!
         </title>
         <script>
-            function test() {
-                alert("I work")
-                document.getElementById('div1').innerHTML = "See what i mean?";
+        	var treats = 0; 
+        	var tricks = 0;
+            function treat() {
+                //alert("WORKS");
+                treats += 1;
+                document.getElementById('div1').innerHTML = null;
+                document.getElementById('div1').innerHTML = "A TREAT!<br>You have " + treats + " treats!";
                 return;
             }
-            const callMe = (value) => {
+            function trick() {
+            	//alert("WORKS");
+            	tricks += 1;
+            	document.getElementById('div1').innerHTML = null;
+                document.getElementById('div1').innerHTML = "A TRICK!<br>You have tricked " + tricks + " people!";
                 return;
             }
         </script>
     </head>
     <body>
         <p>
-            This is a test!
+            Are you here for a TREAT, or a TRICK?
         </p>
-    <p>This is another test:  </p>
-    <button onclick="test()">Nutton</button>
-    <div id="div1">If you click the Nutton button, I will change!</div>
+    <div id="div1">Click a button to find out!</div>
+    <p>
+    <button onclick="trick()">Trick</button>
+    <button onclick="treat()">Treat</button>
     </body>
 </html>
