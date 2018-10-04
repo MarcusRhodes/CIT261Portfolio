@@ -4,24 +4,8 @@
         <title>
 			Trick or Treat!
         </title>
-        <script>
-        	var treats = 0; 
-        	var tricks = 0;
-            function treat() {
-                //alert("WORKS");
-                treats += 1;
-                document.getElementById('div1').innerHTML = null;
-                document.getElementById('div1').innerHTML = "A TREAT!<br>You have " + treats + " treats!";
-                return;
-            }
-            function trick() {
-            	//alert("WORKS");
-            	tricks += 1;
-            	document.getElementById('div1').innerHTML = null;
-                document.getElementById('div1').innerHTML = "A TRICK!<br>You have tricked " + tricks + " people!";
-                return;
-            }
-        </script>
+        <script src="text.js" defer></script>
+        <style type="text/css" src="stle.js"></style>
     </head>
     <body>
         <p>
@@ -29,7 +13,7 @@
         </p>
     <div id="div1">Click a button to find out!</div>
     <p>
-    <button onclick="trick()">Trick</button>
-    <button onclick="treat()">Treat</button>
+    <button ontouchend="trick()">Trick</button>
+    <button ontouchend="treat()">Treat</button>
     </body>
 </html>
