@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Week 2 of coding exercises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <main>
+    	<h2>Sum of Range</h2>
+    	<div id="output">Check console</div>
+    	
+    	<h2>Reversing an array</h2>
+    	<div id="output2">Check console</div>
+    	
+    	<h2>A list</h2>
+    	<div id="output3">Working on it</div>
+    	
+    	<h2>deepEqual</h2>
+    	<div id="output4">Working on it</div>
+    	
+		<button onclick="">Click</button> <!-- remember to change to ontouchend -->
+	</main>
+		<script>
+			//Sum of range
+			function range(first, end, step = 1) {
+				var a = [];
+				if (step >= 1) for (let i = first; i <= end; i += step) a.push(i);
+				else for (let i = first; i >= end; i += step) a.push(i);
+				return a;
+			}
+			function sum(array) {
+				output = 0;
+				for (let i = 0; i < array.length; i++) output += array[i];
+				return output;
+			}
+			console.log(range(1, 10));
+			// → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+			console.log(range(5, 2, -1));
+			// → [5, 4, 3, 2]
+			console.log(sum(range(1, 10)));
+			// → 55
+			
+			//Reversing an array
+			function reverseArray(array) {
+				let neoArray = [];
+				for (let i = array.length - 1; i >= 0; i--) neoArray.push(array[i]);
+				return neoArray;
+			} 
+			function reverseArrayInPlace(array) {
+				let l = array.length;
+				let middle = Math.floor(l / 2);
+				for (let i = 0; i < middle; i++, l--) {
+					let swap = array[i];
+					array[i] = array[l - 1];
+					array[l] = swap;
+				}
+				return array;
+			}
+			console.log(reverseArray(["A", "B", "C"]));
+			// → ["C", "B", "A"];
+			let arrayValue = [1, 2, 3, 4, 5];
+			reverseArrayInPlace(arrayValue);
+			console.log(arrayValue);
+			// → [5, 4, 3, 2, 1]
+			
+			//A list			
+				/* a cool attempt
+				array.forEach(()=>{
+					var singleObj = {value: array[i++], rest: list};
+					list.push(singleObj);
+				});
+				*/
+			function arrayToList(array) {
+				let list = [];
+				let temp = null;
+				for (let i = array.length -1; i >= 0; i--) {
+					addToList(array[i], temp);
+					temp = list;
+				}
+				return list;
+				function addToList(obj1, obj2 = null) {
+					list.push({value: obj1, rest: obj2});
+				}
+			}
+			function listToArray(list) {
+				var array = [];
+				for (let node = list; node; node = node.rest) {
+					array[node] = node;
+				}
+				return array;
+			}
+			function prepend() {
+				
+			}
+			function nth() {
+				
+			}
+			
+			console.log(arrayToList([10, 20]) );
+			// → {value: 10, rest: {value: 20, rest: null}}
+			console.log(listToArray(arrayToList([10, 20, 30])));
+			// → [10, 20, 30]
+			//console.log(prepend(10, prepend(20, null)));
+			// → {value: 10, rest: {value: 20, rest: null}}
+			//console.log(nth(arrayToList([10, 20, 30]), 1));
+			// → 20
+			
+			
+			//deepEqual
+			function deepEqual(val1, val2) {
+				if (typeof val1 == "object" && typeof val2 == "object" && 
+					val1 != null && val2 != null)
+				{
+					if (val1 != val2) {
+					alert(Object.keys(val1));
+						if (Object.keys(val1) == val2) return "help";
+						
+						return "not equal";
+					}
+					if (val1 === val2) return true;
+				} else {
+					return false;
+				}
+			}
+			
+			let obj = {here: {is: "an"}, object: 2};
+			console.log(deepEqual(obj, obj));
+			// → true
+			console.log(deepEqual(obj, {here: 1, object: 2}));
+			// → false
+			console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+			// → true
+			
+		</script>
+</body>
+
+</html>

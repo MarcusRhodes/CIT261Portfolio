@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Great Hikes (dynamic DOM example)</title>
+    <title>Week 3 of coding exercises</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 
@@ -13,107 +13,160 @@
 
 <body>
     <main>
-        <h1>My favorite hikes</h1>
-        <ul id="hikes" class="hikeStyles">
-            <li>
-                <img src="falls.jpg" alt="Image of Bechler Falls">
-                <h2>Bechler Falls</h2>
-                <div>
-                    <h3>Distance</h3>
-                    <p>3 miles</p>
-                </div>
-                <div>
-                    <h3>Difficulty</h3>
-                    <p>Easy</p>
-                </div>
-                <div>
-                    <h3>Description</h3>
-                    <p>Beautiful short hike along the Bechler river to Bechler Falls</p>
-                </div>
-                <div>
-                    <h3>How to get there</h3>
-                    <p>Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road
-                        for
-                        a few miles then turn left again onto the Cave Falls road. Drive to the end of the Cave Falls
-                        road.
-                        There is a parking area at the trailhead.</p>
-                </div>
-            </li>
-        </ul>
-    </main>
+        <h1>1# Mountains</h1>
 
-    <script>
-        //create an array of hikes
-        const hikeList = [
-            {
-                name: 'Bechler Falls',
-                imgSrc: 'falls.jpg',
-                imgAlt: 'Image of Bechler Falls',
-                distance: '3 miles',
-                difficulty: 'Easy',
-                description: 'Beautiful short hike along the Bechler river to Bechler Falls',
-                directions: 'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road.Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
-            },
-            {
-                name: 'Teton Canyon',
-                imgSrc: 'falls.jpg',
-                imgAlt: 'Image of Bechler Falls',
-                distance: '3 miles',
-                difficulty: 'Easy',
-                description: 'Beautiful short hike along the Bechler river to Bechler Falls',
-                directions: 'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road.Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
-            },
-            {
-                name: 'Denanda Falls',
-                imgSrc: 'falls.jpg',
-                imgAlt: 'Image of Bechler Falls',
-                distance: '3 miles',
-                difficulty: 'Easy',
-                description: 'Beautiful short hike along the Bechler river to Bechler Falls',
-                directions: 'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road.Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
-            }
+		<div id="mountains"></div>
+		
+		<button>Click</button> <!-- remember to change to ontouchend -->
+		
+		
+		<h3>2# Balloon</h3>
+		<p>🎈</p>
+		
+		<h3>3# Mouse Trail</h3>
+		<div class="trail">Check your mouse</div>
+		
+		<tab-panel>
+			<div data-tabname="one">Tab one</div>
+			<div data-tabname="two">Tab two</div>
+			<div data-tabname="three">Tab three</div>
+		</tab-panel>
+		
+	</main>
+		<script>
+			function asTabs(node) {
+				// Your code here.
+			}
+			asTabs(document.querySelector("tab-panel"));
+		</script>
+		<script> /*
+			var body = document.getElementsByTagName("body")[0];
+			var tbl = document.createElement("table");
+			var tblBody = document.createElement("tbody");
+	  		const MOUNTAINS = [
+    			{name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+   				{name: "Everest", height: 8848, place: "Nepal"},
+    			{name: "Mount Fuji", height: 3776, place: "Japan"},
+	    		{name: "Vaalserberg", height: 323, place: "Netherlands"},
+    			{name: "Denali", height: 6168, place: "United States"},
+    			{name: "Popocatepetl", height: 5465, place: "Mexico"},
+    			{name: "Mont Blanc", height: 4808, place: "Italy/France"}
+	  		];
+						
+			MOUNTAINS.forEach((mount)=>{
+				var node = document.createElement("tr");
+				tblBody.appendChild(node);
+				for (let i = 0; i < MOUNTAINS.length; i++) {
+					node = document.createElement("th");
+					tblBody.appendChild(node);
+					node = document.createTextNode(mount.name);
+				}
+				//var node = document.createTextNode("</tr>");
+				//element.appendChild(table);
+				var element = document.getElementById("mountains");
+				element.appendChild(node);
+			}); */
+/*
+  document.getElementById("mountains").appendChild(
+    elt("test"));
+*/
+			let balloons = document.querySelector("p");
+			var ballSize = 16;
+			window.addEventListener("keydown", upArrow);
+  			function upArrow() {
+  				if (event.key == "ArrowUp") {
+					inflate(1.10);
+				}
+  			}
+  			window.addEventListener("keydown", downArrow);
+  			function downArrow() {
+  				if (event.key == "ArrowDown") {
+					inflate(0.10);
+  				}
+  			}
+  			function inflate(size) {
+  				if (size > 1.0) {
+  					balloons.style.fontSize = (ballSize *= size) + 'px';
+  				} else if (size < 1.0) { 
+					balloons.style.fontSize = (ballSize = ballSize - ballSize * size ) + 'px';
+				}
+				if (ballSize > 100) {
+					balloons.textContent = "💥";
+					window.removeEventListener("keydown", upArrow);
+					window.removeEventListener("keydown", downArrow);
+				}
+  				return;
+  			}
 
-        ];
+		</script>
+		<style>
+			.trail { /* className for the trail elements */
+				position: absolute;
+				height: 6px; width: 6px;
+				border-radius: 3px;
+				background: teal;
+			}
+			.dot {
+			    height: 8px; width: 8px;
+    			border-radius: 4px; /* rounds corners */
+    			background: blue;
+    			position: absolute;
+  			}
+			body {
+				height: 300px;
+			}
+		</style>
+		<script>
+			var index = 0;
+			var array = [];
+			window.addEventListener("mousemove", event => {
+    			let dot = document.createElement("div");
+    			dot.className = "dot";
+    			array.push(dot);
+				requestAnimationFrame(array, event, index++);
+				if (index == 10) index = 0;
+  			});
+  			function requestAnimationFrame(dots, event, i) {
+    			dots[i].style.left = (event.pageX - 4) + "px";
+    			dots[i].style.top = (event.pageY - 4) + "px";
+    			setTimeout(dots[i], 1000);
+    			document.body.appendChild(dots[i]);
+  			}
+		</script>
 
-        //on load grab the array and insert it into the page
-        const listElement = document.getElementById("hikes");
-        hikeList.foreach((hike) => {
-        	creatHike(hike);
-        });
+<p>Name: <input type="text" data-help="Your full name"></p>
+<p>Age: <input type="text" data-help="Your age in years"></p>
+<p id="help"></p>
 
+<script>
+/*
+  let help = document.querySelector("#help");
+  let fields = document.querySelectorAll("input");
+  for (let field of Array.from(fields)) {
+    field.addEventListener("focus", event => {
+      let text = event.target.getAttribute("data-help");
+      help.textContent = text;
+    });
+    field.addEventListener("blur", event => {
+      help.textContent = "";
+    });
+  }*/
+</script>
 
-        function createHike(hike) {
-            //create the DOM elements and append them together
-
-            let item = document.createElement('li');
-            
-            let image = document.createElement('img');
-            image.src = hike.imgSrc;
-            image.alt = hike.imgAlt;
-            item.innerHTML = "<h2>" + hike.name + "</h2>";
-            item.appendChild(image);
-            
-			log.dir(hike);
-        	
-            return item;
-        }
-
-        function renderHike(hike) {
-            // Do it again with a template literal string
-            const item = document.createElement('li');
-            item.innerHTML = '
-            <img src="${hike.imgSrc}" alt="${hike.alt}">
-            	<h2>${hike.name}</h2>
-            	<div>
-            		
-            	</div>
-
-			'
-            return item;
-        }
-
-
-    </script>
+<script>
+/*
+  let scheduled = null;
+  window.addEventListener("mousemove", event => {
+    if (!scheduled) {
+      setTimeout(() => {
+        document.body.textContent =
+          `Mouse at ${scheduled.pageX}, ${scheduled.pageY}`;
+        scheduled = null;
+      }, 250);
+    }
+    scheduled = event;
+  }); */
+</script>
 </body>
 
 </html>
