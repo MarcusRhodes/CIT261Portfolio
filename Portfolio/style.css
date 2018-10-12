@@ -1,3 +1,8 @@
-body {
-	background-color: orange; 
+.body {
+	background-color: blue; 
+}
+
+#map {
+	height: 400px;
+	width: 100px;
 }

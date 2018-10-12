@@ -1,18 +1,22 @@
-var treatv = 0;
-var trickv = 0;
 window.addEventListener("load", event => {
-    	if (getCookie("treats") == "" || getCookie("tricks") == "") {
-			setCookie("treats", treatv, 1);
-			setCookie("tricks", trickv, 1);
-		}
-	});
+    if (!document.cookie.value) {
+		setCookie("treats", 0, 1.5);
+		setCookie("tricks", 0, 1.5);
+	}
+});
 	
 
 function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires=" + d.toGMTString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	let savedCookie = getCookie(cname);
+	if (savedCookie == "") savedCookie = 0;
+	if (savedCookie == 0) {
+    	var d = new Date();
+    	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    	var expires = "expires=" + d.toGMTString();
+    	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    } else {
+    	document.cookie = cname + "=" + (parseInt(savedCookie) + cvalue) + ";" + expires + ";path=/";
+    }
 }
 
 function getCookie(cname) {
@@ -38,33 +42,32 @@ function checkCookie(cname) {
         alert("Uh Oh");
     }
 }
-/*
-button.addEventListener("ontouchend", event => {
-    	if (false) {
-			
-		}
-	}, false);
-*/
+
+function deleteCookie(cname) {
+	document.cookie = cname + "=0;expires=;path=/";
+}
 
 function treat() {
-	treatv++;
-    setCookie("treats", treatv, 0.5);    
-    checkCookie("treats");
-    //document.getElementById('div1').innerHTML = null;
-    //document.getElementById('div1').innerHTML = "A TREAT!<br>You have " + getCookie(_treats) + " treats!";
+    setCookie("treats", 1, 0.5);
+    document.getElementById('div1').innerHTML = null;
+    document.getElementById('div1').innerHTML = "A TREAT!<br>You have " + getCookie("treats") + " treats!";
     return;
 }
 function trick() {
-	trickv++;
-    setCookie("tricks", trickv, 0.5);
-    checkCookie("tricks");
-    //document.getElementById('div1').innerHTML = null;
-    //document.getElementById('div1').innerHTML = "A TRICK!<br>You have tricked " + getCookie(_tricks) + " people!";
+    setCookie("tricks", 1, 0.5);
+    document.getElementById('div1').innerHTML = null;
+    document.getElementById('div1').innerHTML = "A TRICK!<br>You have tricked " + getCookie("tricks") + " people!";
     return;
 }
-function saveToTreat(val) {
-	document.cookie = "_treats=treats; expires=Nov 1; path=/";
-}
-function savetoTrick(val) {
-	document.cookie = "_tricks=tricks; expires=Nov 1; path=/";
-}
+
+var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoibWFyY3VzcmhvZGVzIiwiYSI6ImNqbjZlOGxxbTAybnYzcXFpcjd6djVvcnYifQ.zggwq7w18xjNoIHn2tqg3g'
+}).addTo(mymap);
+
+var marker = L.marker([51.5, -0.09]).addTo(mymap); 
+
+
