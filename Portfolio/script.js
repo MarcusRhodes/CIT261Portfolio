@@ -5,7 +5,6 @@ window.addEventListener("load", event => {
 	}
 });
 	
-
 function setCookie(cname, cvalue, exdays) {
 	let savedCookie = getCookie(cname);
 	if (savedCookie == "") savedCookie = 0;
@@ -43,8 +42,9 @@ function checkCookie(cname) {
     }
 }
 
-function deleteCookie(cname) {
-	document.cookie = cname + "=0;expires=;path=/";
+function deleteCookie() {
+	document.cookie = "treats=0;expires=;path=/";
+	document.cookie = "tricks=0;expires=;path=/";
 }
 
 function treat() {
@@ -53,6 +53,7 @@ function treat() {
     document.getElementById('div1').innerHTML = "A TREAT!<br>You have " + getCookie("treats") + " treats!";
     return;
 }
+
 function trick() {
     setCookie("tricks", 1, 0.5);
     document.getElementById('div1').innerHTML = null;
@@ -60,7 +61,7 @@ function trick() {
     return;
 }
 
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+var mymap = L.map('mapid').setView([43.818353, -111.782335], 13);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -68,6 +69,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1IjoibWFyY3VzcmhvZGVzIiwiYSI6ImNqbjZlOGxxbTAybnYzcXFpcjd6djVvcnYifQ.zggwq7w18xjNoIHn2tqg3g'
 }).addTo(mymap);
 
-var marker = L.marker([51.5, -0.09]).addTo(mymap); 
+var marker = L.marker([43.818353, -111.782335]).addTo(mymap); 
 
 
