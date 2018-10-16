@@ -4,6 +4,8 @@ window.addEventListener("load", event => {
 		setCookie("tricks", 0, 1.5);
 	}
 });
+
+var flag = "";
 	
 function setCookie(cname, cvalue, exdays) {
 	let savedCookie = getCookie(cname);
@@ -49,6 +51,8 @@ function deleteCookie() {
 
 function treat() {
     setCookie("treats", 1, 0.5);
+    flag = "treat";
+    addFlag();
     document.getElementById('div1').innerHTML = null;
     document.getElementById('div1').innerHTML = "A TREAT!<br>You have " + getCookie("treats") + " treats!";
     return;
@@ -56,6 +60,8 @@ function treat() {
 
 function trick() {
     setCookie("tricks", 1, 0.5);
+    flag = "trick";
+    addFlag();
     document.getElementById('div1').innerHTML = null;
     document.getElementById('div1').innerHTML = "A TRICK!<br>You have tricked " + getCookie("tricks") + " people!";
     return;
@@ -69,6 +75,31 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1IjoibWFyY3VzcmhvZGVzIiwiYSI6ImNqbjZlOGxxbTAybnYzcXFpcjd6djVvcnYifQ.zggwq7w18xjNoIHn2tqg3g'
 }).addTo(mymap);
 
-var marker = L.marker([43.818353, -111.782335]).addTo(mymap); 
+var treatIcon = L.icon({
+    iconUrl: 'treat.png',
+    iconSize:     [55, 55], // size of the icon
+    iconAnchor:   [20, 55] // point of the icon which will correspond to marker's location
+});
+
+var trickIcon = L.icon({
+    iconUrl: 'trick.png',
+    iconSize:     [60, 60], // size of the icon
+    iconAnchor:   [20, 55] // point of the icon which will correspond to marker's location
+});
+
+var marker = L.marker([43.818353, -111.782335]).addTo(mymap);
+
+function addFlag() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        alert("This app requires your location to work!");
+    }
+}
+
+function showPosition(position) {
+    if (flag == "treat") L.marker([position.coords.latitude, position.coords.longitude], {icon: treatIcon}).addTo(mymap);
+    if (flag == "trick") L.marker([position.coords.latitude, position.coords.longitude], {icon: trickIcon}).addTo(mymap);
+}
 
 

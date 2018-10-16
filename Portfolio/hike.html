@@ -23,7 +23,8 @@
             max-width: 500px;
         }
     </style>
-
+	<script type="text/javascript" src="test.js" >
+	</script>
 </head>
 
 <body>
@@ -55,6 +56,8 @@
                 </div>
             </li>
         </ul>
+        <br>
+        <button onclick="myfunc()">Click this</button>
     </main>
 
     <script>
@@ -92,10 +95,9 @@
 
         //on load grab the array and insert it into the page
         const listElement = document.getElementById("hikes");
-        hikeList.foreach((hike) => {
-        	creatHike(hike);
+        hikeList.forEach((hike) => {
+        	//creatHike(hike);
         });
-
 
         function createHike(hike) {
             //create the DOM elements and append them together
@@ -116,14 +118,7 @@
         function renderHike(hike) {
             // Do it again with a template literal string
             const item = document.createElement('li');
-            item.innerHTML = '
-            <img src="${hike.imgSrc}" alt="${hike.alt}">
-            	<h2>${hike.name}</h2>
-            	<div>
-            		
-            	</div>
-
-			'
+            item.innerHTML = '<img src="${hike.imgSrc}" alt="${hike.alt}"><h2>${hike.name}</h2><div></div>';
             return item;
         }
 
