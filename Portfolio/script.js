@@ -141,16 +141,19 @@ function makeMap() {
 }
 
 function check() {
-	var stuff = localStorage.getItem("treatntrick");
-	if (stuff == null || stuff == "null") {
    		list[0] = [{
    			"treat": false,
    			"x": 0.0,
    			"y": 0.0
    		}];
    		localStorage.setItem("treatntrick", JSON.stringify(list));//still dont see wtf
-   	}
+
+	var stuff = localStorage.getItem("treatntrick");
     alert(stuff);//not showing up????
+}
+
+function check2() {
+	alert(localStorage.getItem("treatntrick"));
 }
 
 function clearList() {
