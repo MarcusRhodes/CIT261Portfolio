@@ -106,8 +106,6 @@ var list = [{
 }];
 
 function addFlag() {
-
-    alert("adding flag");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(addPosition);
     } else {
@@ -118,6 +116,15 @@ function addFlag() {
 function addPosition(position) {
    	
 		var stuff = localStorage.getItem("treatntrick");
+
+        if (stuff == null || stuff == "null") {
+    		list[0] = [{
+    			"treat": false,
+       			"x": 0.0,
+       			"y": 0.0
+    		}];
+    		localStorage.setItem("treatntrick", JSON.stringify(list));
+    	}
 		var output = JSON.parse(stuff);
 		output.push({
 			"treat":flag,
