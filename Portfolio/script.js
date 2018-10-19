@@ -153,7 +153,8 @@ function check() {
 }
 
 function check2() {
-	alert(localStorage.getItem("treatntrick"));
+	var stuff = localStorage.getItem("treatntrick");
+    alert(stuff);//not showing up????
 }
 
 function clearList() {
