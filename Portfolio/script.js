@@ -150,7 +150,7 @@ function check() {
    		}];
    		localStorage.setItem("treatntrick", JSON.stringify(list));//still dont see wtf
    	}
-    alert(stuff);
+    alert(stuff);//not showing up????
 }
 
 function clearList() {
