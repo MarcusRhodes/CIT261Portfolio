@@ -61,6 +61,7 @@ function deleteCookie() {
 function treat() {
     setCookie("treats", 1, 0.5);
     flag = true;
+    alert("tapped treats");
     addFlag();
     document.getElementById('div1').innerHTML = null;
     document.getElementById('div1').innerHTML = "A TREAT!<br>You have " + getCookie("treats") + " treats!";
@@ -70,6 +71,7 @@ function treat() {
 function trick() {
     setCookie("tricks", 1, 0.5);
     flag = false;
+    alert("tapped tricks");
     addFlag();
     document.getElementById('div1').innerHTML = null;
     document.getElementById('div1').innerHTML = "A TRICK!<br>You have tricked " + getCookie("tricks") + " people!";
@@ -104,6 +106,8 @@ var list = [{
 }];
 
 function addFlag() {
+
+    alert("adding flag");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(addPosition);
     } else {
@@ -126,8 +130,10 @@ function addPosition(position) {
 }
 
 function makeMap() {
+    alert("tapped makemap");
 	var stuff = localStorage.getItem("treatntrick");
 	var output = JSON.parse(stuff);
+    alert(output);
 	for (let i = 1; i < output.length; i++) {
 		console.dir(output[i].treat);
 		if (output[i].treat == true) {
