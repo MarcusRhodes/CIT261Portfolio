@@ -123,7 +123,7 @@ function addPosition(position) {
        			"x": 0.0,
        			"y": 0.0
     		}];//should see this code
-    		localStorage.setItem("treatntrick", JSON.stringify(list));
+    		localStorage.setItem("treatntrick", JSON.stringify(list));//still dont see wtf
     	}
 		var output = JSON.parse(stuff);
 		output.push({
