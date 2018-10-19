@@ -6,7 +6,13 @@
     <title>Week 5 of coding exercises</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-
+		
+    	.em {
+    		font-size: 2em;
+    	}
+    	.vw {
+    		font-size: 2vw;
+    	}
     </style>
     <script type="text/javascript" >
     	const nouns = ["cat", "sock", "chip", "hero", "monkey", "baby", "match"];
@@ -22,6 +28,8 @@
     		document.getElementById('output').innerHTML = output;
     		return;
     	}
+    	
+    	
     </script>
 
 </head>
@@ -30,13 +38,15 @@
     <main>
         <h1>Word Salad Generator</h1>
 
-		<div id="mountains"></div>
+		<div id="em">testing style</div>
 		
 		<button onclick="salad()">Click me for some salad</button> <!-- remember to change to ontouchend -->
 		<br>
 		<br>
 		<div id="output"></div>
-		
+		<br>
+		<br>
+		<div class="em">Output Here</div>
 	</main>
 		
 </body>

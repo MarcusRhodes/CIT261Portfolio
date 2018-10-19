@@ -116,15 +116,6 @@ function addFlag() {
 function addPosition(position) {
    	
 		var stuff = localStorage.getItem("treatntrick");
-
-        if (stuff == null || stuff == "null") {
-    		list[0] = [{
-    			"treat": false,
-       			"x": 0.0,
-       			"y": 0.0
-    		}];//should see this code
-    		localStorage.setItem("treatntrick", JSON.stringify(list));//still dont see wtf
-    	}
 		var output = JSON.parse(stuff);
 		output.push({
 			"treat":flag,
@@ -137,10 +128,8 @@ function addPosition(position) {
 }
 
 function makeMap() {
-    alert("tapped makemap");
 	var stuff = localStorage.getItem("treatntrick");
 	var output = JSON.parse(stuff);
-    alert(output);
 	for (let i = 1; i < output.length; i++) {
 		console.dir(output[i].treat);
 		if (output[i].treat == true) {
@@ -149,6 +138,19 @@ function makeMap() {
 			L.marker([output[i].x, output[i].y], {icon: trickIcon}).addTo(mymap);
 		}
 	}
+}
+
+function check() {
+	var stuff = localStorage.getItem("treatntrick");
+	if (stuff == null || stuff == "null") {
+   		list[0] = [{
+   			"treat": false,
+   			"x": 0.0,
+   			"y": 0.0
+   		}];
+   		localStorage.setItem("treatntrick", JSON.stringify(list));//still dont see wtf
+   	}
+    alert(stuff);
 }
 
 function clearList() {
