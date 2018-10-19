@@ -122,7 +122,7 @@ function addPosition(position) {
     			"treat": false,
        			"x": 0.0,
        			"y": 0.0
-    		}];
+    		}];//should see this code
     		localStorage.setItem("treatntrick", JSON.stringify(list));
     	}
 		var output = JSON.parse(stuff);
