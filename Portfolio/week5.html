@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Week 5 of coding exercises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    </style>
+    <script type="text/javascript" >
+    	const nouns = ["cat", "sock", "chip", "hero", "monkey", "baby", "match"];
+    	const verbs = ["throwing", "accepted", "thought", "left", "yell", "chugged", "sat", "quips"];
+    	const adjective = ["Thundering", "Grumpy", "Pretty", "Dusty", "Wooden"];
+    	
+    	function salad() {
+    		var output = "";
+    		output += adjective[Math.floor(Math.random() * Math.floor(5))] + " ";
+    		output += nouns[Math.floor(Math.random() * Math.floor(7))] + " ";
+    		output += verbs[Math.floor(Math.random() * Math.floor(8))] + ".";
+    		
+    		document.getElementById('output').innerHTML = output;
+    		return;
+    	}
+    </script>
+
+</head>
+
+<body>
+    <main>
+        <h1>Word Salad Generator</h1>
+
+		<div id="mountains"></div>
+		
+		<button onclick="salad()">Click me for some salad</button> <!-- remember to change to ontouchend -->
+		<br>
+		<br>
+		<div id="output"></div>
+		
+	</main>
+		
+</body>
+
+</html>
