@@ -11,7 +11,6 @@ window.addEventListener("load", event => {
 		}];
 		localStorage.setItem("treatntrick", JSON.stringify(list));
 	}
-	//clearList();
 });
 
 var flag = false;
@@ -43,16 +42,7 @@ function getCookie(cname) {
     }
     return "";
 }
-/*
-function checkCookie(cname) {
-    var c = getCookie(cname);
-    if (c != "") {
-        alert(c);
-    } else {
-        alert("Uh Oh");
-    }
-}
-*/
+
 function deleteCookie() {
 	document.cookie = "treats=0;expires=;path=/";
 	document.cookie = "tricks=0;expires=;path=/";
@@ -61,9 +51,8 @@ function deleteCookie() {
 function treat() {
     setCookie("treats", 1, 0.5);
     flag = true;
-    alert("tapped treats");
     addFlag();
-    document.getElementById('div1').innerHTML = null;
+    document.getElementById('div2').innerHTML = null;
     document.getElementById('div1').innerHTML = "A TREAT!<br>You have " + getCookie("treats") + " treats!";
     return;
 }
@@ -71,14 +60,13 @@ function treat() {
 function trick() {
     setCookie("tricks", 1, 0.5);
     flag = false;
-    alert("tapped tricks");
     addFlag();
     document.getElementById('div1').innerHTML = null;
-    document.getElementById('div1').innerHTML = "A TRICK!<br>You have tricked " + getCookie("tricks") + " people!";
+    document.getElementById('div2').innerHTML = "A TRICK!<br>You have tricked " + getCookie("tricks") + " people!";
     return;
 }
 
-var mymap = L.map('mapid').setView([43.818353, -111.782335], 13);
+var mymap = L.map('mapid').setView([43.818353, -111.782335], 15);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -115,8 +103,9 @@ function addFlag() {
 
 function addPosition(position) {
    	
-		var stuff = localStorage.getItem("treatntrick");
-		var output = JSON.parse(stuff);
+	var stuff = localStorage.getItem("treatntrick");
+	var output = JSON.parse(stuff);
+	if (output.length > 1) {
 		output.push({
 			"treat":flag,
 			"x":position.coords.latitude,
@@ -124,39 +113,55 @@ function addPosition(position) {
 		});
 		localStorage.setItem("treatntrick", JSON.stringify(output));
 		console.dir(output[1].treat);
-		alert(output.length);
+	} else {
+		list[0] = [{
+			"treat": false,
+   			"x": 0.0,
+   			"y": 0.0
+		}];
+		localStorage.setItem("treatntrick", JSON.stringify(list));
+		output.push({
+			"treat":flag,
+			"x":position.coords.latitude,
+			"y":position.coords.longitude
+		});
+		localStorage.setItem("treatntrick", JSON.stringify(output));
+		console.dir(output[1].treat);
+	}
 }
 
 function makeMap() {
 	var stuff = localStorage.getItem("treatntrick");
 	var output = JSON.parse(stuff);
-	for (let i = 1; i < output.length; i++) {
-		console.dir(output[i].treat);
-		if (output[i].treat == true) {
-			L.marker([output[i].x, output[i].y], {icon: treatIcon}).addTo(mymap);
-		} else {
-			L.marker([output[i].x, output[i].y], {icon: trickIcon}).addTo(mymap);
+	if (output.length > 1) {
+		for (let i = 1; i < output.length; i++) {
+			console.dir(output[i].treat);
+			if (output[i].treat == true) {
+				L.marker([output[i].x, output[i].y], {icon: treatIcon}).addTo(mymap);
+			} else {
+				L.marker([output[i].x, output[i].y], {icon: trickIcon}).addTo(mymap);
+			}
 		}
+		document.getElementById("mapid").style.visibility = "visible";
+		document.getElementById("hide").style.visibility = "visible";
+	} else {
+		alert("You need to get a treat or do a trick before that!");
 	}
 }
 
-function check() {
-   		list[0] = [{
-   			"treat": false,
-   			"x": 0.0,
-   			"y": 0.0
-   		}];
-   		localStorage.setItem("treatntrick", JSON.stringify(list));//still dont see wtf
-
-	var stuff = localStorage.getItem("treatntrick");
-    alert(stuff);//not showing up????
-}
-
-function check2() {
-	var stuff = localStorage.getItem("treatntrick");
-    alert(stuff);//not showing up????
+function hideMap() {
+	document.getElementById("mapid").style.visibility = "hidden";
+	document.getElementById("hide").style.visibility = "hidden";
 }
 
 function clearList() {
-	localStorage.setItem("treatntrick", null);
+	setCookie("treats", 0, 1.5);
+	setCookie("tricks", 0, 1.5);
+	list[0] = [{
+		"treat": false,
+		"x": 0.0,
+		"y": 0.0
+	}];
+	localStorage.setItem("treatntrick", JSON.stringify(list));
+	deleteCookie();
 }

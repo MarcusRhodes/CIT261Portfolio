@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Week 6 of coding exercises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+		
+    	.em {
+    		font-size: 2em;
+    	}
+    	.vw {
+    		font-size: 2vw;
+    	}
+    </style>
+    <script type="text/javascript" >
+    	
+    	function reverse(str) {
+    		var newstring = "";
+    		for (let i = str.length - 1; i >= 0; i--) {
+    			newstring += str[i];
+    		}
+    		document.getElementById('output').innerHTML = newstring;
+    		return;
+    	}
+    	
+    	
+    </script>
+
+</head>
+
+<body>
+    <main>
+        <h1>reverse strings</h1>
+
+		<div id="em">revers "reverse('what a bonch of ballony"</div>
+		
+		<button onclick="reverse('what a bonch of ballony')">Click me a reversed string</button> <!-- remember to change to ontouchend -->
+		<br>
+		<br>
+		<div id="output"></div>
+		<br>
+		<br>
+	</main>
+		
+</body>
+
+</html>

@@ -1,11 +1,59 @@
-.body {
-	background-color: blue; 
+
+body {
+	background-color: orange;
+	margin: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    font-size: 3em;
+    font-family: de-walpergens-pica;
 }
 
-#map {
-	height: 400px;
-	width: 100px;
+#mapid {
+	height: 90vw;
+	width: 100%;
+	visibility: hidden;
 }
 
-//em, not px
+#b1 {
+	font-family: emilys-candy;
+	font-size: 14vw;
+    position: relative;
+}
+
+#b2 {
+	font-family: eater;	
+	font-size: 9.5vw;
+    position: relative;
+}
+
+#b3, #b4, #hide {
+	font-family: de-walpergens-pica;
+	font-size: 1em;
+    position: relative;
+}
+
+#hide {
+	visibility: hidden;
+}
+
+#div1 {
+	font-family: emilys-candy;
+}
+
+#div2 {
+	font-family: eater;
+}
+
+
+
+
+.span {
+  position: relative;
+  margin-bottom: 3.125em;
+  margin-top: 1em;
+  border: 0;
+  border-bottom: 2px;
+  color: red;
+}
 

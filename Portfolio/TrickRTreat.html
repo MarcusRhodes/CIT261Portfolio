@@ -12,40 +12,33 @@
 		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
    			integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    			crossorigin=""></script>
+   		<script src='http://use.edgefonts.net/emilys-candy.js'></script>
+   		<script src='http://use.edgefonts.net/eater.js'></script>
+   		<script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
         <script src="script.js" defer></script>
-        <style src="style.css" defer>
-        	#mapid {
-				height: 400px;
-				width: 100%;
-			}
-        </style>
+        <style src="style.css"></style>
+        
+	<link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body>
+    	<hr class=”span”>
         <p>Are you here for a </p>
     	<p>
-    	<button onclick="trick()">Trick</button> <!-- change to ontouchend-->
+    	<button id="b1" onclick="trick()">Trick</button> <!-- change to ontouchend-->
     	 Or A 
-    	<button onclick="treat()">Treat</button> <!-- change to ontouchend-->
+    	<button id="b2" onclick="treat()">Treat</button> <!-- change to ontouchend-->
     	?
     	</p>
-    	<p><div id="div1"></div></p>
-    	<p><button onclick='deleteCookie("treats")'>Delete</button></p> <!-- change to ontouchend-->
+    	<p><div id="div1"></div> <div id="div2" /></div></p>
+    	<hr class=”span”>
+    	<button id="b3" onclick="makeMap()">Progress</button> <!-- change to ontouchend-->
+		<br>
+		<br>
+		<button id="hide" onclick="hideMap()">Hide Progress</button> <!-- change to ontouchend-->
+		<br>
+		<br>
     	<div id="mapid"></div>
-    	<br>
-    	
-    	<button onclick="makeMap()">Make Map</button> <!-- change to ontouchend-->
-    	<br>
 		<br>
-		<br>
-    	<button onclick="clearList()">CLEAR</button> <!-- change to ontouchend-->
-    	<br>
-		<br>
-		<br>
-    	<button onclick="check()">Check</button> <!-- change to ontouchend-->
-		<br>
-		<br>
-		<br>
-		<button onclick="check2()">Check2</button> <!-- change to ontouchend-->
-
+    	<button id="b4" onclick="clearList()">CLEAR</button> <!-- change to ontouchend-->
     </body>
 </html>
