@@ -6,7 +6,8 @@ body {
     padding-right: 1em;
     text-align: center;
     font-size: 3em;
-    font-family: de-walpergens-pica;
+    /*font-family: de-walpergens-pica;*/
+    font-family: aguafina-script;
 }
 
 #mapid {

@@ -66,7 +66,7 @@ function trick() {
     return;
 }
 
-var mymap = L.map('mapid').setView([43.818353, -111.782335], 15);
+var mymap = L.map('mapid').setView([43.818353, -111.782335], 16);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -76,13 +76,13 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 var treatIcon = L.icon({
     iconUrl: 'treat.png',
-    iconSize:     [55, 55], // size of the icon
+    iconSize:     [165, 165], // size of the icon
     iconAnchor:   [20, 55] // point of the icon which will correspond to marker's location
 });
 
 var trickIcon = L.icon({
     iconUrl: 'trick.png',
-    iconSize:     [60, 60], // size of the icon
+    iconSize:     [170, 170], // size of the icon
     iconAnchor:   [20, 55] // point of the icon which will correspond to marker's location
 });
 
@@ -163,5 +163,6 @@ function clearList() {
 		"y": 0.0
 	}];
 	localStorage.setItem("treatntrick", JSON.stringify(list));
+	marker.clearLayers();
 	deleteCookie();
 }
