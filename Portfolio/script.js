@@ -13,7 +13,6 @@ window.addEventListener("load", event => {
 	}
 });
 
-var flag = false;
 	
 function setCookie(cname, cvalue, exdays) {
 	let savedCookie = getCookie(cname);
@@ -65,7 +64,7 @@ function trick() {
     document.getElementById('div2').innerHTML = "A TRICK!<br>You have tricked " + getCookie("tricks") + " people!";
     return;
 }
-
+/*
 var mymap = L.map('mapid').setView([43.818353, -111.782335], 16);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -73,6 +72,16 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoibWFyY3VzcmhvZGVzIiwiYSI6ImNqbjZlOGxxbTAybnYzcXFpcjd6djVvcnYifQ.zggwq7w18xjNoIHn2tqg3g'
 }).addTo(mymap);
+var marker = L.marker([43.818353, -111.782335]).addTo(mymap);*/
+
+	
+var flag = false;
+var list = [{
+	"treat": true,
+    "x": 0,
+    "y": 0
+}];
+
 
 var treatIcon = L.icon({
     iconUrl: 'treat.png',
@@ -85,13 +94,6 @@ var trickIcon = L.icon({
     iconSize:     [170, 170], // size of the icon
     iconAnchor:   [20, 55] // point of the icon which will correspond to marker's location
 });
-
-var marker = L.marker([43.818353, -111.782335]).addTo(mymap);
-var list = [{
-	"treat": true,
-    "x": 0,
-    "y": 0
-}];
 
 function addFlag() {
     if (navigator.geolocation) {
@@ -129,12 +131,31 @@ function addPosition(position) {
 		console.dir(output[1].treat);
 	}
 }
+	var mymap = L.map('mapid').setView([43.818353, -111.782335], 16);
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	    maxZoom: 18,
+    	id: 'mapbox.streets',
+    	accessToken: 'pk.eyJ1IjoibWFyY3VzcmhvZGVzIiwiYSI6ImNqbjZlOGxxbTAybnYzcXFpcjd6djVvcnYifQ.zggwq7w18xjNoIHn2tqg3g'
+	}).addTo(mymap);
+	var marker = L.marker([43.818353, -111.782335]).addTo(mymap);
 
 function makeMap() {
+	
+	if (mymap == null) {
+		mymap = L.map('mapid').setView([43.818353, -111.782335], 16);
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		    maxZoom: 18,
+    		id: 'mapbox.streets',
+    		accessToken: 'pk.eyJ1IjoibWFyY3VzcmhvZGVzIiwiYSI6ImNqbjZlOGxxbTAybnYzcXFpcjd6djVvcnYifQ.zggwq7w18xjNoIHn2tqg3g'
+		}).addTo(mymap);
+	}
+	
 	var stuff = localStorage.getItem("treatntrick");
 	var output = JSON.parse(stuff);
 	if (output.length > 1) {
-		for (let i = 1; i < output.length; i++) {
+		for (let i = 1; i < output.length; i++) {//MAKE FOREACH
 			console.dir(output[i].treat);
 			if (output[i].treat == true) {
 				L.marker([output[i].x, output[i].y], {icon: treatIcon}).addTo(mymap);
@@ -163,6 +184,13 @@ function clearList() {
 		"y": 0.0
 	}];
 	localStorage.setItem("treatntrick", JSON.stringify(list));
-	marker.clearLayers();
+	//L.marker.clearLayers();
 	deleteCookie();
+	mymap.remove();
+	mymap = null;
+	document.getElementById("mapid").style.visibility = "hidden";
+	document.getElementById("hide").style.visibility = "hidden";
 }
+
+
+
