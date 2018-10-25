@@ -155,14 +155,14 @@ function makeMap() {
 	var stuff = localStorage.getItem("treatntrick");
 	var output = JSON.parse(stuff);
 	if (output.length > 1) {
-		for (let i = 1; i < output.length; i++) {//MAKE FOREACH
-			console.dir(output[i].treat);
-			if (output[i].treat == true) {
-				L.marker([output[i].x, output[i].y], {icon: treatIcon}).addTo(mymap);
-			} else {
-				L.marker([output[i].x, output[i].y], {icon: trickIcon}).addTo(mymap);
+		output.forEach((item) => {
+			console.dir(item.treat, item.x, item.y);
+			if (item.treat == true) {
+				L.marker([item.x, item.y], {icon: treatIcon}).addTo(mymap);
+			} else if (item.treat == false) {
+				L.marker([item.x, item.y], {icon: trickIcon}).addTo(mymap);
 			}
-		}
+		});
 		document.getElementById("mapid").style.visibility = "visible";
 		document.getElementById("hide").style.visibility = "visible";
 	} else {
@@ -178,13 +178,12 @@ function hideMap() {
 function clearList() {
 	setCookie("treats", 0, 1.5);
 	setCookie("tricks", 0, 1.5);
-	list[0] = [{
+	let listv = [{
 		"treat": false,
 		"x": 0.0,
 		"y": 0.0
 	}];
-	localStorage.setItem("treatntrick", JSON.stringify(list));
-	//L.marker.clearLayers();
+	localStorage.setItem("treatntrick", JSON.stringify(listv));
 	deleteCookie();
 	mymap.remove();
 	mymap = null;
