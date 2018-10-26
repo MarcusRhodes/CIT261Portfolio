@@ -4,7 +4,7 @@ window.addEventListener("load", event => {
 		setCookie("tricks", 0, 1.5);
 	}
 	if (localStorage.getItem("treatntrick") == "null") {
-		list[0] = [{
+		list = [{
 			"treat": false,
    			"x": 0.0,
    			"y": 0.0
@@ -128,7 +128,6 @@ function addPosition(position) {
 			"y":position.coords.longitude
 		});
 		localStorage.setItem("treatntrick", JSON.stringify(output));
-		console.dir(output[1].treat);
 	}
 }
 	var mymap = L.map('mapid').setView([43.818353, -111.782335], 16);
