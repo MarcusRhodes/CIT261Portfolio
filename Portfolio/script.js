@@ -177,6 +177,8 @@ function makeMap() {
 function hideMap() {
 	document.getElementById("mapid").style.visibility = "hidden";
 	document.getElementById("hide").style.visibility = "hidden";
+		var elmnt = document.getElementById("span");
+		elmnt.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 function clearList() {
