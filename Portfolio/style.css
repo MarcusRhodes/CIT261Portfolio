@@ -7,6 +7,8 @@ body {
     text-align: center;
     font-size: 3em;
     font-family: aguafina-script;
+    
+    border: 5px solid black;
 }
 
 #mapid {

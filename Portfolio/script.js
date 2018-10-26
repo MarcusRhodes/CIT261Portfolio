@@ -104,6 +104,8 @@ function addFlag() {
 }
 
 function addPosition(position) {
+	document.getElementById("mapid").style.visibility = "hidden";
+	document.getElementById("hide").style.visibility = "hidden";
    	
 	var stuff = localStorage.getItem("treatntrick");
 	var output = JSON.parse(stuff);
@@ -162,7 +164,10 @@ function makeMap() {
 				L.marker([item.x, item.y], {icon: trickIcon}).addTo(mymap);
 			}
 		});
-		document.getElementById("mapid").style.visibility = "visible";
+		
+		var elmnt = document.getElementById("mapid");
+		elmnt.style.visibility = "visible";
+		elmnt.scrollIntoView({ behavior: 'smooth', block: 'center' });
 		document.getElementById("hide").style.visibility = "visible";
 	} else {
 		alert("You need to get a treat or do a trick before that!");
@@ -186,6 +191,8 @@ function clearList() {
 	deleteCookie();
 	mymap.remove();
 	mymap = null;
+    document.getElementById('div1').innerHTML = null;
+    document.getElementById('div2').innerHTML = null;
 	document.getElementById("mapid").style.visibility = "hidden";
 	document.getElementById("hide").style.visibility = "hidden";
 }
