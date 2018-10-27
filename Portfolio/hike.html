@@ -32,7 +32,7 @@
         <h1>My favorite hikes</h1>
         <ul id="hikes" class="hikeStyles">
             <li>
-                <img src="falls.jpg" alt="Image of Bechler Falls">
+                <img src="https://yellowstoneinsider.com/wp-content/uploads/2017/06/iris-falls-bechler-river-haynes-postcard.jpg" alt="Image of Bechler Falls">
                 <h2>Bechler Falls</h2>
                 <div>
                     <h3>Distance</h3>
@@ -57,6 +57,7 @@
             </li>
         </ul>
         <br>
+        <h4>This is a test for reading arrays.</h4>
         <button onclick="myfunc()">Click this</button>
     </main>
 
@@ -65,7 +66,7 @@
         const hikeList = [
             {
                 name: 'Bechler Falls',
-                imgSrc: 'falls.jpg',
+                imgSrc: 'https://www.americansouthwest.net/wyoming/photographs700/cave-falls2.jpg',
                 imgAlt: 'Image of Bechler Falls',
                 distance: '3 miles',
                 difficulty: 'Easy',
@@ -74,29 +75,32 @@
             },
             {
                 name: 'Teton Canyon',
-                imgSrc: 'falls.jpg',
+                imgSrc: 'https://media-cdn.tripadvisor.com/media/photo-s/02/15/4b/57/cascade-canyon-trail.jpg',
                 imgAlt: 'Image of Bechler Falls',
-                distance: '3 miles',
-                difficulty: 'Easy',
-                description: 'Beautiful short hike along the Bechler river to Bechler Falls',
-                directions: 'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road.Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
+                distance: '2 miles',
+                difficulty: 'Medium',
+                description: 'Awesome hike in Teton. Love this view.',
+                directions: 'Go to Google maps and search for Teton Canyon'
             },
             {
                 name: 'Denanda Falls',
-                imgSrc: 'falls.jpg',
+                imgSrc: 'https://d1njyp8tsu122i.cloudfront.net/wp-content/uploads/Dunanda-Falls-yellowstone-2023728.jpg',
                 imgAlt: 'Image of Bechler Falls',
-                distance: '3 miles',
-                difficulty: 'Easy',
-                description: 'Beautiful short hike along the Bechler river to Bechler Falls',
-                directions: 'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road.Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
+                distance: '23 miles',
+                difficulty: 'Hard as heck',
+                description: 'Try going over this thing in a barrel.',
+                directions: 'Idk lol.'
             }
 
         ];
 
         //on load grab the array and insert it into the page
-        const listElement = document.getElementById("hikes");
-        hikeList.forEach((hike) => {
-        	//creatHike(hike);
+        window.addEventListener("load", event => {
+        	const listElement = document.getElementById("hikes");
+        	hikeList.forEach((hike) => {
+        		listElement.appendChild(createHike(hike));
+        	});
+        	
         });
 
         function createHike(hike) {
@@ -110,7 +114,7 @@
             item.innerHTML = "<h2>" + hike.name + "</h2>";
             item.appendChild(image);
             
-			log.dir(hike);
+			console.dir(hike);
         	
             return item;
         }

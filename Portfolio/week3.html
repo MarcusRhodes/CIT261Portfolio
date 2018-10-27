@@ -13,63 +13,14 @@
 
 <body>
     <main>
-        <h1>1# Mountains</h1>
-
-		<div id="mountains"></div>
-		
-		<button>Click</button> <!-- remember to change to ontouchend -->
-		
-		
-		<h3>2# Balloon</h3>
+		<h3>1# Balloon</h3>
 		<p>🎈</p>
 		
-		<h3>3# Mouse Trail</h3>
+		<h3>2# Mouse Trail</h3>
 		<div class="trail">Check your mouse</div>
 		
-		<tab-panel>
-			<div data-tabname="one">Tab one</div>
-			<div data-tabname="two">Tab two</div>
-			<div data-tabname="three">Tab three</div>
-		</tab-panel>
-		
 	</main>
-		<script>
-			function asTabs(node) {
-				// Your code here.
-			}
-			asTabs(document.querySelector("tab-panel"));
-		</script>
-		<script> /*
-			var body = document.getElementsByTagName("body")[0];
-			var tbl = document.createElement("table");
-			var tblBody = document.createElement("tbody");
-	  		const MOUNTAINS = [
-    			{name: "Kilimanjaro", height: 5895, place: "Tanzania"},
-   				{name: "Everest", height: 8848, place: "Nepal"},
-    			{name: "Mount Fuji", height: 3776, place: "Japan"},
-	    		{name: "Vaalserberg", height: 323, place: "Netherlands"},
-    			{name: "Denali", height: 6168, place: "United States"},
-    			{name: "Popocatepetl", height: 5465, place: "Mexico"},
-    			{name: "Mont Blanc", height: 4808, place: "Italy/France"}
-	  		];
-						
-			MOUNTAINS.forEach((mount)=>{
-				var node = document.createElement("tr");
-				tblBody.appendChild(node);
-				for (let i = 0; i < MOUNTAINS.length; i++) {
-					node = document.createElement("th");
-					tblBody.appendChild(node);
-					node = document.createTextNode(mount.name);
-				}
-				//var node = document.createTextNode("</tr>");
-				//element.appendChild(table);
-				var element = document.getElementById("mountains");
-				element.appendChild(node);
-			}); */
-/*
-  document.getElementById("mountains").appendChild(
-    elt("test"));
-*/
+		<script> 
 			let balloons = document.querySelector("p");
 			var ballSize = 16;
 			window.addEventListener("keydown", upArrow);
@@ -134,39 +85,6 @@
   			}
 		</script>
 
-<p>Name: <input type="text" data-help="Your full name"></p>
-<p>Age: <input type="text" data-help="Your age in years"></p>
-<p id="help"></p>
-
-<script>
-/*
-  let help = document.querySelector("#help");
-  let fields = document.querySelectorAll("input");
-  for (let field of Array.from(fields)) {
-    field.addEventListener("focus", event => {
-      let text = event.target.getAttribute("data-help");
-      help.textContent = text;
-    });
-    field.addEventListener("blur", event => {
-      help.textContent = "";
-    });
-  }*/
-</script>
-
-<script>
-/*
-  let scheduled = null;
-  window.addEventListener("mousemove", event => {
-    if (!scheduled) {
-      setTimeout(() => {
-        document.body.textContent =
-          `Mouse at ${scheduled.pageX}, ${scheduled.pageY}`;
-        scheduled = null;
-      }, 250);
-    }
-    scheduled = event;
-  }); */
-</script>
 </body>
 
 </html>

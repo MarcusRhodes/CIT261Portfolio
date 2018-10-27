@@ -20,12 +20,12 @@
     	<div id="output2">Check console</div>
     	
     	<h2>A list</h2>
-    	<div id="output3">Working on it</div>
+    	<div id="output3">Check console</div>
     	
     	<h2>deepEqual</h2>
     	<div id="output4">Working on it</div>
     	
-		<button onclick="">Click</button> <!-- remember to change to ontouchend -->
+		<button ontouchend="">Click</button> <!-- remember to change to ontouchend -->
 	</main>
 		<script>
 			//Sum of range
@@ -66,17 +66,10 @@
 			console.log(reverseArray(["A", "B", "C"]));
 			// → ["C", "B", "A"];
 			let arrayValue = [1, 2, 3, 4, 5];
-			reverseArrayInPlace(arrayValue);
-			console.log(arrayValue);
-			// → [5, 4, 3, 2, 1]
 			
-			//A list			
-				/* a cool attempt
-				array.forEach(()=>{
-					var singleObj = {value: array[i++], rest: list};
-					list.push(singleObj);
-				});
-				*/
+			console.log(reverseArrayInPlace(arrayValue));
+			// → [5, 4, 3, 2, 1]z
+			
 			function arrayToList(array) {
 				let list = [];
 				let temp = null;
@@ -84,10 +77,11 @@
 					addToList(array[i], temp);
 					temp = list;
 				}
-				return list;
 				function addToList(obj1, obj2 = null) {
 					list.push({value: obj1, rest: obj2});
 				}
+				
+				return list;
 			}
 			function listToArray(list) {
 				var array = [];
@@ -96,35 +90,28 @@
 				}
 				return array;
 			}
-			function prepend() {
-				
-			}
-			function nth() {
-				
-			}
 			
 			console.log(arrayToList([10, 20]) );
 			// → {value: 10, rest: {value: 20, rest: null}}
 			console.log(listToArray(arrayToList([10, 20, 30])));
 			// → [10, 20, 30]
-			//console.log(prepend(10, prepend(20, null)));
-			// → {value: 10, rest: {value: 20, rest: null}}
-			//console.log(nth(arrayToList([10, 20, 30]), 1));
-			// → 20
 			
 			
 			//deepEqual
+			/* This has been commented out because it is no longer working for some reason. 
+			Will find out why soon.
 			function deepEqual(val1, val2) {
 				if (typeof val1 == "object" && typeof val2 == "object" && 
 					val1 != null && val2 != null)
 				{
 					if (val1 != val2) {
-					alert(Object.keys(val1));
-						if (Object.keys(val1) == val2) return "help";
+						alert(Object.keys(val1));
+						alert(Object.keys(val2));
+						if (Object.keys(val1) == Object.keys(val2)) return true;
 						
 						return "not equal";
 					}
-					if (val1 === val2) return true;
+					if (val1 == val2) return true;
 				} else {
 					return false;
 				}
@@ -137,7 +124,7 @@
 			// → false
 			console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
 			// → true
-			
+		*/	
 		</script>
 </body>
 
