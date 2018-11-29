@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Week 8 of coding exercises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+		
+    	.em {
+    		font-size: 2em;
+    	}
+    	.vw {
+    		font-size: 2vw;
+    	}
+    </style>
+    <script>
+    	async function locateScalpel(nest) {
+    		
+		}
+		
+		function locateScalpel2(nest) {
+			
+		}
+		
+		function fetching() {
+			var data = new FormData();
+			fetch("https://eloquentjavascript.net/author", {
+				//method: "GET",
+				headers: {
+					'Accept': 'application/json, text/plain, */*',
+					'Content-Type': 'application/json'
+				},
+				body: data
+			}).then(response => {
+				console.log(response.status);
+				// → 200
+				console.log(response.headers.get("Content-Type"));
+				// → text/plain
+				//alert(response.status + "\n" + response.headers.get("Content-Type"));
+			});
+		}
+		
+		
+		//fetch("example/data.txt")
+		//	.then(resp => resp.text())
+		//	.then(text => console.log(text));
+		// → This is the content of data.txt
+    </script>
+
+</head>
+
+<body>
+    <main>
+        <h1>Send a fetch request</h1>
+
+		<div id="em"></div>
+		
+		<button onclick="fetching()">Click me to FETCH some stuff</button> <!-- remember to change to ontouchend -->
+		<br>
+		<br>
+		<div id="output"></div>
+		<br>
+		<br>
+		
+	</main>
+		
+</body>
+
+</html>

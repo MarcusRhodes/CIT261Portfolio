@@ -1,0 +1,33 @@
+
+body {
+	background-color: rgb(255, 162, 162);
+	margin: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    font-size: 3em;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    border: 5px solid black;
+}
+
+#snap, #filter, #share {
+	font-family: de-walpergens-pica;
+	font-size: 1em;
+    position: relative;
+}
+
+
+
+
+
+
+.span {
+  position: relative;
+  margin-bottom: 3.125em;
+  margin-top: 1em;
+  border: 0;
+  border-bottom: 2px;
+  color: red;
+}
+

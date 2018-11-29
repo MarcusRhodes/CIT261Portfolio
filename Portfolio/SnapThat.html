@@ -1,0 +1,43 @@
+<!doctype html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<html>
+    <head> <!-- marcusrhodes.github.io/CIT261Portfolio/Portfolio/SnapThat.html-->
+        <title>
+			SnapThat!
+        </title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   			integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   			crossorigin=""/>
+    		<!-- Make sure you put this AFTER Leaflet's CSS -->
+		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   			integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   			crossorigin=""></script>
+   		<script src='//use.edgefonts.net/emilys-candy.js'></script><!--avenir-->
+
+        <script src="script2.js" defer></script>
+        <style src="style2.css"></style>
+        
+	<link rel="stylesheet" type="text/css" href="style2.css" />
+    </head>
+    <body>
+    	<hr id="span" class=”span”>
+        <p>Welcome to SnapThat!</p>
+    	<p>Take a picture!</p>
+    	<p><div id="div1"></div> <div id="div2" ></div></p>
+    	<hr class=”span”>
+    	<button id="snap" onclick="snap()">Snap</button> <!-- change to ontouchend-->
+        <br>
+            <video id="video"> </video>
+            <canvas id="canvas"> </canvas>
+
+		<br>
+		<button id="filter" onclick="filter()">Filter</button> <!-- change to ontouchend-->
+		<br>
+		<br>
+    	<div id="mapid"></div>
+		<br>
+    	<button id="share" onclick="share()">Share!</button> <!-- change to ontouchend-->
+    	<br>
+		<br>
+    </body>
+</html>

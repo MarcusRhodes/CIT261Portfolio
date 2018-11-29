@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Week 7 of coding exercises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+		
+    	.em {
+    		font-size: 2em;
+    	}
+    	.vw {
+    		font-size: 2vw;
+    	}
+    </style>
+    <script>
+    	function reduce(array, combine, start) {
+			let current = start;
+			for (let element of array) {
+				current = combine(current, element);
+			}
+			return current;
+		}
+		function flatten(a1, a2, a3) {
+			//let a4 = a1.concat(a2);
+			//let result = a4.concat(a3);
+			let result = reduce([a2,a3], (a, b) => a.concat(b), a1);
+			
+			document.getElementById('output').innerHTML = result;
+    		return;
+		}
+    	
+    	function loop(value, test, body, update) {
+    		while (value) {
+    			if (test(value)) {
+    				update(value);
+    				value = body(value);
+    			}
+    		}
+    	}
+    	
+    	function every(array, test) {
+    		for (let item of array) {
+    			if (!test(item)) {
+    				return false;
+    			}
+    		}
+    		return true;
+    	}
+    	
+		function countBy(items, groupName) {
+			let counts = [];
+			for (let item of items) {
+				let name = groupName(item);
+				let known = counts.findIndex(c => c.name == name);
+				if (known == -1) {
+					counts.push({name, count: 1});
+				} else {
+					counts[known].count++;
+				}
+			}
+			return counts;
+		}
+    	function dominantDirection(text) {
+			let scripts = countBy(text, char => {
+				let script = characterScript(char.codePointAt(0));
+		    	return script ? script.name : "none";
+			}).filter(({name}) => name != "none");
+
+			let total = scripts.reduce((n, {count}) => n + count, 0);
+			if (total == 0) return "No scripts found";
+			let total2 = scripts.reduce((n, {count}) => n + count, 0);
+			return scripts.map(({name, count}) => {
+		    	return `${Math.round(count * 100 / total)}% ${name}`;
+			}).join(", ");
+		}
+    	
+
+		class MultiplicatorUnitFailure extends Error {}
+		function primitiveMultiply(a, b) {
+			if (Math.random() < 0.2) {
+				return a * b;
+			} else {
+			throw new MultiplicatorUnitFailure("Klunk");
+			}
+		}
+		function reliableMultiply(a, b) {
+			try {
+				alert(primitiveMultiply(a, b));
+			} catch (e) {
+				if (e == "Error: Klunk") reliableMultiply(a, b);
+				else throw new Error("Invalid error");
+			}
+		}
+
+		const box = {
+			locked: true,
+			unlock() { this.locked = false; },
+			lock() { this.locked = true;  },
+			_content: [],
+			get content() {
+				if (this.locked) throw new Error("Locked!");
+				return this._content;
+			}
+		};
+		function withBoxUnlocked(body) {
+			if (box.locked == true) box.unlock();
+			try {
+				body(box);
+			} finally {
+				if (box.locked == false) box.lock();
+			}
+		}
+
+		
+		function lockbox() {
+			withBoxUnlocked(function() {
+				box.content.push("gold piece");
+			});
+			try {
+				withBoxUnlocked(function() {
+					throw new Error("Pirates on the horizon! Abort!");
+				});
+			} catch (e) {
+				console.log("Error raised:", e);
+			}
+		}
+    </script>
+
+</head>
+
+<body>
+    <main>
+        <h1>Flatten string</h1>
+
+		<div id="em">Flattens "[1, 2, 3], [4, 5], [6]"</div>
+		
+		<button onclick="flatten([1, 2, 3], [4, 5], [6])">Click me a flat array</button> <!-- remember to change to ontouchend -->
+		<br>
+		<br>
+		<div id="output"></div>
+		<br>
+		<br>
+		<h1>My own loop</h1>
+
+		<div id="em">loop(3, n => n > 0, n => n - 1, console.log). Check the log for details!</div>
+		
+		<button onclick="loop(3, n => n > 0, n => n - 1, console.log)">
+		Click me to run the loop</button> <!-- remember to change to ontouchend -->
+		<br>
+		<br>
+		<br>
+		<h1>Everything</h1>
+
+		<div id="em">every([1, 3, 5], n => n < 10). Check the console for details.</div>
+		
+		<button onclick="console.log(every([1, 3, 5], n => n < 10))">Click me to run </button> <!-- remember to change to ontouchend -->
+		<br>
+		<br>
+		<br>
+		<h1>Dominant writing direction</h1>
+
+		<div id="em">Check the console for details.</div>
+		
+		<button onclick="">Click me to run </button> <!-- remember to change to ontouchend -->
+		<br>
+		<br>
+		<br>
+		<h1>Retry</h1>
+
+		<div id="em">Uses try/catch blocks and recursion to get result. An alert should apear with 64.</div>
+		
+		<button onclick="reliableMultiply(8, 8)">Click me to retry </button> <!-- remember to change to ontouchend -->
+		<br>
+		<br>
+		<br>
+		<h1>The locked box</h1>
+
+		<div id="em">This will unock a box, place somthing in, and then lock it. Check  console.</div>
+		
+		<button onclick="lockbox()">Click me to retry </button> <!-- remember to change to ontouchend -->
+		<br>
+		<br>
+		<br>
+	</main>
+		
+</body>
+
+</html>
