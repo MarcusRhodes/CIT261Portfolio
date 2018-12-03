@@ -34,7 +34,38 @@ function snap() {
     if (video.paused) video.play();
     else video.pause();
 
-    context.drawImage(video, 0, 0);
+
+
+    var sx, sy, dx, dy;
+    var sWidth, sHeight, dWidth, dHeight;
+
+    // offset point to crop the image
+    sx = xView;
+    sy = yView;
+
+    // dimensions of cropped image          
+    sWidth =  context.canvas.width;
+    sHeight = context.canvas.height;
+
+    // if cropped image is smaller than canvas we need to change the source dimensions
+    if(image.width - sx < sWidth){
+        sWidth = image.width - sx;
+    }
+    if(image.height - sy < sHeight){
+        sHeight = image.height - sy; 
+    }
+
+    // location on canvas to draw the croped image
+    dx = 0;
+    dy = 0;
+    // match destination with source to not scale the image
+    dWidth = sWidth;
+    dHeight = sHeight;          
+
+    // draw the cropped image
+    context.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+
+    //context.drawImage(video, 0, 0);
 
     if (video.style.display != "none") {
         video.style.display = "none";
