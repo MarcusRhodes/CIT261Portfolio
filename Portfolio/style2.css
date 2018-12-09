@@ -15,6 +15,13 @@ body {
 #filter{top:60%;}
 #share{top:70%;}
 
+fb:login-button{
+    font-size: 2vw;
+    position: fixed;
+    top: 40%;
+    left: 10%;
+}
+
 #welcome{
     position: fixed;
     z-index: 1;
