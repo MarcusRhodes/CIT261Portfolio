@@ -1,0 +1,99 @@
+<!doctype html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<html>
+    <head> <!-- marcusrhodes.github.io/CIT261Portfolio/Portfolio/SnapThat.html-->
+        <title>
+			SnapThat!
+        </title>
+        <script src="script2.js" defer></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+            // window.fbAsyncInit = function() {
+            //     FB.init({ //783361122002615
+            //         appId: '783361122002615',//273021396736814
+            //         autoLogAppEvents : true,
+            //         xfbml            : true,
+            //         version          : 'v3.2'
+            //     });
+            //     FB.getLoginStatus(function(response) {
+            //         statusChangeCallback(response);
+            //     });
+            // };
+            
+            // (function(d, s, id){
+            //     var js, fjs = d.getElementsByTagName(s)[0];
+            //     if (d.getElementById(id)) {return;}
+            //     js = d.createElement(s); js.id = id;
+            //     js.src = "https://connect.facebook.net/en_US/sdk.js";
+            //     fjs.parentNode.insertBefore(js, fjs);
+            // }(document, 'script', 'facebook-jssdk'));
+
+            // function statusChangeCallback(response) {
+            //     if (response.status === "connected") {
+            //         console.dir("Logged in and autheticated"); 
+            //     } else {
+            //         console.dir("Not logged in");
+            //     }
+            // }
+
+            // FB.login(function(response) {
+            //         if (response.authResponse) {
+            //             console.log('Welcome!  Fetching your information.... ');
+            //             FB.api('/me', function(response) {
+            //                 console.log('Good to see you, ' + response.name + '.');
+            //             });
+            //         } else {
+            //             console.log('User cancelled login or did not fully authorize.');
+            //         }
+            //     });
+
+            // function checkLoginState() {
+            //     FB.getLoginStatus(function(response) {
+            //         statusChangeCallback(response);
+            //     });
+            //     return;
+            // }
+
+
+
+            // $.ajax({
+            //     type: "GET",
+            //     dataType: "jsonp",
+            //     cache: false,
+            //     url: "https://api.instagram.com/v1/tags/" + tag + "/media/recent?client_id=" + id,
+            //     success: function(response) {
+            //       var length = response.data != 'undefined' ? response.data.length : 0;
+            //       var limit = photoCount != null && photoCount < length ? photoCount : length;
+            //       if(limit > 0) {
+            //         for(var i = 0; i < limit; i++) {
+            //           $('<img>', {
+            //             src: response.data[i].images.standard_resolution.url
+            //           }).appendTo($("#photos"));
+            //         }
+            //       }
+            //     }
+            //   });
+
+        </script>
+        <style src="style2.css"></style>
+        
+	<link rel="stylesheet" type="text/css" href="style2.css" />
+    </head>
+    <body>
+    	<button id="snap" onclick="snap()">Snap</button> <!-- change to ontouchend-->
+        <br>
+        <video id="video"> </video>
+        <canvas id="canvas"> </canvas>
+
+		<br>
+        <button id="filter" onclick="filter()">Filter</button> <!-- change to ontouchend-->
+        <br>
+        <!-- <fb:login-button 
+            scope="public_profile,email,publish_actions"
+            onlogin="checkLoginState();">
+        </fb:login-button> -->
+		<br>
+        <button id="share" onclick="share()">Share!</button> <!-- change to ontouchend-->
+        <br>
+    </body>
+</html>
