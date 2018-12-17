@@ -42,16 +42,16 @@ function snap() {
 
     // draw the cropped image
     context.drawImage(video, 0, 0, dWidth, dHeight);
-    
+    debugger;
     //Hide or show buttons and video
     if (video.style.display != "none") {
         video.style.display = "none";
-        document.getElementById("filter").style.diplay = "none";
-        document.getElementById("share").style.diplay = "none";
-    } else {
-        video.style.display = "inline";
         document.getElementById("filter").style.diplay = "inline";
         document.getElementById("share").style.diplay = "inline";
+    } else {
+        video.style.display = "inline";
+        document.getElementById("filter").style.diplay = "none";
+        document.getElementById("share").style.diplay = "none";
     }
     return;
 }
@@ -63,7 +63,7 @@ function filter() {
     switch(++incremint) {
         case 1:
             context.fillStyle = "black";
-            context.font = '48px serif';
+            context.font = '48px impact';
             context.fillText('Hello from SnapThat', 50, 100); 
             context.filter = 'hue-rotate(100deg)';
             return;
