@@ -1,9 +1,4 @@
 //This is the javascript for my SnapThat project
-
-//flicker api
-
-
-
 var video = document.getElementById("video");
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext('2d');
@@ -53,12 +48,10 @@ function snap() {
         video.style.display = "none";
         document.getElementById("filter").style.diplay = "none";
         document.getElementById("share").style.diplay = "none";
-        document.getElementById("welcome").style.diplay = "none";
     } else {
         video.style.display = "inline";
         document.getElementById("filter").style.diplay = "inline";
         document.getElementById("share").style.diplay = "inline";
-        document.getElementById("welcome").style.diplay = "inline";
     }
     return;
 }
@@ -95,13 +88,35 @@ function filter() {
     }
 }
 
-// function share() {
-//     var file = new Image();
-//     file.src = canvas.toDataURL("image/png");
-//
-//     // // Generate the image data var url = canvas.toDataURL();
-//     // var Pic = canvas.toDataURL("image/png");
-//     // //Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "");\
-//     // document.getElementById('welcome').innerHTML = Pic;
-//     return;
-// }
+// Converts canvas to an image
+function convertCanvasToImage() {
+	var image = new Image();
+	image.src = canvas.toDataURL("image/png");
+	return image;
+}
+
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/doeqfagak/upload';
+const CLOUDINARY_UPLOAD_PRSET = 'zxcsl5dg';
+
+function share() {
+    var file = convertCanvasToImage();
+    console.dir(file);
+
+    var fd = new FormData();
+    fd.append('file', file.src);
+    fd.append('upload_preset', CLOUDINARY_UPLOAD_PRSET);
+
+    axios({
+        url: CLOUDINARY_URL,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: fd
+    }).then(function(res) {
+        console.dir(res)
+    }).catch(function(error) {
+        console.dir(error);
+    });
+    return;
+}

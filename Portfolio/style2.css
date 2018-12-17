@@ -6,21 +6,23 @@ body {
 
 #snap, #filter, #share {
 	font-family: de-walpergens-pica;
-	font-size: 2vw;
-    position: fixed;
-    top: 40%;
-    left: 30%;
+	font-size: 3vw;
+    position: absolute;
+    padding: 10px;
+    width: 15%;
+    bottom: 5%;
+    /* left: 10%; */
     z-index: 1;
+    display:inline;
 }
-#filter{top:60%;}
-#share{top:70%;}
+#filter{left:10%;}
 
-fb:login-button{
-    font-size: 2vw;
-    position: fixed;
-    top: 40%;
-    left: 10%;
-}
+#snap{
+    left: 50%;
+    margin-right: -50%; 
+    transform: translate(-50%, -50%);}
+
+#share{right: 10%;}
 
 #canvas{
     position: fixed;
