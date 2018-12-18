@@ -99,6 +99,13 @@ const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/doeqfagak/upload';
 const CLOUDINARY_UPLOAD_PRSET = 'zxcsl5dg';
 
 function share() {
+    var link = document.getElementById('share');
+      link.setAttribute('download', 'SnapThat.png');
+      link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+      link.click();
+
+
+
     var file = convertCanvasToImage();
     console.dir(file);
 
